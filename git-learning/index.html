@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Git im Dev Alltag</title>
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/black.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h1>Git im Dev Alltag</h1>
+        </section>
+        <section>
+            <h2>Ziele des Workshops / Vortrag</h2>
+            <ul>
+                <li>Auffrischen der Grundlagen von der Arbeit mit Git</li>
+                <li>Sicheres Arbeiten mit remote Repositories</li>
+                <li>Lösen von Konflikten und häufigen Pitfalls</li>
+            </ul>
+        </section>
+        <section>
+            <h2>Das Beispielprojekt</h2>
+            <div class="fragment fade-in">
+                <p>Lokales auschecken des Git Projektes</p>
+                <pre>
+                    <code data-trim class="language-bash">
+                        $ git clone git@git.prod.frachtwerk.de:workshop/git-learning.git
+                    </code>
+                </pre>
+            </div>
+            <div class="fragment fade-in">
+                <p>Aufbau des Projektes</p>
+                <pre>
+                    <code data-trim class="language-bash">
+                        .
+                        ├── assets
+                        │       └── index.js
+                        ├── public
+                        │       └── index.html
+                        └── README.md
+                    </code>
+                </pre>
+            </div>
+        </section>
+        <section>
+            <section>
+                <h2>Grundlagen</h2>
+            </section>
+            <section>
+                <h2>Lokale Git Ebenen</h2>
+                <img src="assets/git_base.drawio.svg">
+            </section>
+            <section>
+                <h2>Git Commands</h2>
+                <pre>
+                    <code data-trim class="language-bash">
+                        $ git status
+                    </code>
+                </pre>
+                <pre>
+                    <code data-trim class="language-bash">
+                        $ git add
+                    </code>
+                </pre>
+                <pre>
+                    <code data-trim class="language-bash">
+                        $ git commit
+                    </code>
+                </pre>
+                <pre>
+                    <code data-trim class="language-bash">
+                        $ git diff
+                    </code>
+                </pre>
+                <pre>
+                    <code data-trim class="language-bash">
+                        $ git restore
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Dateifluss <i>add</i></h2>
+                <img src="assets/git_base.drawio_add.svg">
+            </section>
+            <section>
+                <h2>Hands-On</h2>
+            </section>
+            <section>
+                <h2>Dateifluss <i>commit</i></h2>
+                <img src="assets/git_base.drawio_commit.svg">
+            </section>
+            <section>
+                <h2>Hands-On</h2>
+            </section>
+            <section>
+                <h2>Dateifluss <i>diff</i></h2>
+                <img src="assets/git_base.drawio_diff.svg">
+            </section>
+            <section>
+                <h2>Hands-On</h2>
+            </section>
+            <section>
+                <h2>Dateifluss <i>restore</i></h2>
+                <img src="assets/git_base.drawio_restore.svg">
+            </section>
+            <section>
+                <h2>Hands-On</h2>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Branches</h2>
+            </section>
+            <section>
+                <p>Ein Branch ist einfach nur ein Zeiger auf einen bestimmten Commit</p>
+                <img src="assets/git_branch.drawio.svg" class="fragment">
+            </section>
+            <section>
+                <h2>Git Commands</h2>
+                <pre>
+                    <code data-trim class="language-bash">
+                        $ git branch
+                    </code>
+                </pre>
+                <pre>
+                    <code data-trim class="language-bash">
+                        $ git switch
+                    </code>
+                </pre>
+                <pre>
+                    <code data-trim class="language-bash">
+                        $ git merge
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Hands-On</h2>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Mit remote Repositories arbeiten</h2>
+            </section>
+            <section>
+                <ul>
+                    <h2>Mit remote Repositories arbeiten</h2>
+                    <li>ein lokales Git Repository kann mehrere remote Repositories haben</li>
+                    <li>lokal wird ein Abbild des remote Repositories gehalten</li>
+                    <li>mittels <code>git fetch</code> wird das lokale Abbild aktualisiert</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Mit remote Repositories arbeiten</h2>
+                <img src="assets/git_remote.drawio.svg">
+            </section>
+            <section>
+                <h2>Git Commands</h2>
+                <pre>
+                    <code data-trim class="language-bash">
+                        $ git remote
+                    </code>
+                </pre>
+                <pre>
+                    <code data-trim class="language-bash">
+                        $ git fetch
+                    </code>
+                </pre>
+                <pre>
+                    <code data-trim class="language-bash">
+                        $ git pull
+                    </code>
+                </pre>
+                <pre>
+                    <code data-trim class="language-bash">
+                        $ git push
+                    </code>
+                </pre>
+            </section>
+            <section>
+                <h2>Hands-On</h2>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Merge Konflikte</h2>
+            </section>
+            <section>
+                <h2>Merge Konflikte</h2>
+                <ul>
+                    <li>treten immer dann auf, wenn die gleiche Zeile in derselben Datei in unterschiedlichen Strängen
+                        bearbeitet werden
+                    </li>
+                    <li>Konflikte müssen erst behoben werden, bevor ein Merge weitergeführt werden kann</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Hands-On</h2>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Fortgeschrittene Funktionen</h2>
+            </section>
+            <section>
+                <h2><code>stash</code></h2>
+                <ul>
+                    <li>mit <code>stash</code> können die offenen Änderungen in den Arbeitsbereich in einen
+                        Zwischenspeicher geschoben werden
+                    </li>
+                    <li>der Stash ist wie ein Stapel aufgebaut, dessen Inhalte wieder angewandt werden können</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Hands-On</h2>
+            </section>
+            <section>
+                <h2><code>revert</code></h2>
+                <ul>
+                    <li>mit <code>revert</code> können die Änderungen eines Commits rückgängig gemacht werden</li>
+                    <li>dabei wird die Git Historie nicht geändert</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Hands-On</h2>
+            </section>
+            <section>
+                <h2><code>rebase</code></h2>
+                <ul>
+                    <li>mit <code>rebase</code> werden die Commits eines Branches auf die eines anderen geschoben</li>
+                    <li>dabei wird die Git Historie geändert</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Hands-On</h2>
+            </section>
+            <section>
+                <h2><code>rebase --interactive</code></h2>
+                <ul>
+                    <li>mit <code>rebase --interactive</code> wird ein Rebase auf denselben Branch ausgeführt</li>
+                    <li>dadurch lassen sich Commits im Nachgang geändert werden</li>
+                    <li>dabei wird die Git Historie geändert</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Hands-On</h2>
+            </section>
+        </section>
+    </div>
+</div>
+
+<script src="dist/reveal.js"></script>
+<script src="plugin/notes/notes.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+    });
+</script>
+</body>
+</html>
