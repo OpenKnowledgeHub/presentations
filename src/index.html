@@ -1,0 +1,499 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Performance Workshop</title>
+
+    <link rel="stylesheet" href="dist/reset.css">
+    <link rel="stylesheet" href="dist/reveal.css">
+    <link rel="stylesheet" href="dist/theme/moon.css">
+
+    <!-- Theme used for syntax highlighted code -->
+    <link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+    <style>
+        .bold-font {
+            font-weight: 600 !important;
+        }
+
+        .small-font {
+            font-size: .7em !important;
+        }
+
+        .quote-font {
+            font-style: oblique;
+        }
+
+        .highlight-font {
+            color: red;
+        }
+
+        .no-dot-list {
+            list-style: none;
+        }
+    </style>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h1>Performance Workshop</h1>
+        </section>
+        <section>
+            <p class="small-font">Session 1</p>
+            <p class="bold-font">Einführung und theoretische Grundlagen</p>
+            <br>
+            <br>
+            <p class="small-font">Session 2</p>
+            <p class="bold-font">Erarbeitung von Qualitätsstandards und Best Practices</p>
+        </section>
+        <section>
+            <p>Session 1</p>
+            <h2>Einführung und Grundlagen</h2>
+        </section>
+        <section>
+            <h3>Agenda</h3>
+            <ul>
+                <li>Ziel des Workshops</li>
+                <li>Was ist eigentlich Software-Performance?</li>
+                <li>Wie messe ich Performance?</li>
+                <li>Zusammenfassung und Ausblick auf Session 2</li>
+            </ul>
+        </section>
+        <section>
+            <section>
+                <h2>Ziel des Workshops</h2>
+            </section>
+            <section>
+                <h3>Ziele heute</h3>
+                <ul>
+                    <li>Schaffung eines gemeinsamen Verständnisses von Performance</li>
+                    <li>Orientierung in der Landschaft von Messmöglichkeiten</li>
+                    <li>Bewusstsein schaffen von Performance Metriken</li>
+                </ul>
+                <aside class="notes">
+                    <ul>
+                        <li>5 Minuten</li>
+                    </ul>
+                </aside>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Was ist eigentlich Software-Performance?</h2>
+                <aside class="notes">
+                    <ul>
+                        <li>20 Minuten</li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                <h3>Wo wir herkommen</h3>
+                <p class="fragment fade-in-then-semi-out">Der Workshop "Software Qualität" bei den letzten Teamtagen hat
+                    einen Bedarf der Vertiefung im Bereich Performance identifiziert</p>
+                <p class="fragment fade-in">Doch was verstehen wir unter performanter Software?</p>
+            </section>
+            <section>
+                <p><a href="https://menti.com">https://menti.com</a></p>
+                <p>Code: 8405 2301</p>
+                <img src="./assets/menti_1.png" alt="QR Code zu Menti-Meter"/>
+            </section>
+            <section data-transition="slide-in fade-out">
+                <h3>Definition</h3>
+                <p class="quote-font">Software-Performance bezieht sich auf die Fähigkeit eines Softwaresystems, eines
+                    Moduls oder eines Algorithmus
+                    bestimmte Aufgaben innerhalb akzeptabler Zeitrahmen und mit vertretbarem Ressourcenverbrauch zu
+                    bewältigen.
+                </p>
+            </section>
+            <section data-transition="fade-in slide-out">
+                <h3>Definition</h3>
+                <p class="quote-font">Software-Performance bezieht sich auf die <span
+                        class="highlight-font">Fähigkeit</span> eines Softwaresystems, eines
+                    Moduls oder eines Algorithmus
+                    <span class="highlight-font">bestimmte Aufgaben</span> innerhalb <span class="highlight-font">akzeptabler Zeitrahmen</span>
+                    und mit <span class="highlight-font">vertretbarem Ressourcenverbrauch</span> zu
+                    bewältigen.
+                </p>
+            </section>
+            <section>
+                <h3>Definition</h3>
+                <ul>
+                    <li class="fragment fade-in">bestimmte Aufgaben<span
+                            class="fragment fade-in quote-font">: was für Aufgaben?</span></li>
+                    <li class="fragment fade-in">akzeptabler Zeitrahmen<span
+                            class="fragment fade-in quote-font">: welcher Zeitrahmen ist akzeptabel?</span></li>
+                    <li class="fragment fade-in">vertretbarem Ressourcenverbrauch<span
+                            class="fragment fade-in quote-font">: welcher Ressourcenverbrauch ist vertretbar?</span>
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h3>Schlüsselbegriffe</h3>
+                <aside class="notes">
+                    <ul>
+                        <li>15 Minuten</li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                <h3>Reaktionszeit</h3>
+                <ul>
+                    <li>Die Zeitspanne zwischen der (Benutzer)-Anfrage und der ersten sichtbaren Antwort der Anwendung
+                    </li>
+                    <li>Kritisch für Benutzererfahrung, besonders bei interaktiven Anwendungen.</li>
+                    <li>Beeinflusst durch Netzwerkgeschwindigkeit, Serverkapazität und Verarbeitungslogik.</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Durchsatz</h3>
+                <ul>
+                    <li>Die Anzahl der Transaktionen oder Anfragen, die das System in einer bestimmten Zeit verarbeiten
+                        kann.
+                    </li>
+                    <li>Besonders wichtig für Anwendungen mit hoher Last / vielen gleichzeitigen Nutzern</li>
+                    <li>Wird oft in Transaktionen pro Sekunde (TPS) oder Anfragen pro Sekunde (RPS) gemessen.</li>
+                    <li>Begrenzte Ressourcen können den Durchsatz negativ beeinflussen.</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Effizienz</h3>
+                <ul>
+                    <li>Bezieht sich auf die optimale Nutzung von Systemressourcen wie CPU, Speicher und
+                        Netzwerkbandbreite.
+                    </li>
+                    <li>Ein effizientes System erledigt Aufgaben schnell, während es den Verbrauch von Ressourcen
+                        minimiert.
+                    </li>
+                    <li>Geringe Ressourcennutzung bedeutet, dass das System kostengünstiger und umweltfreundlicher
+                        arbeitet.
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h3>Skalierbarkeit</h3>
+                <ul>
+                    <li>Die Fähigkeit eines Systems, mit wachsendem Nutzeraufkommen oder steigenden Datenmengen zu
+                        wachsen.
+                    </li>
+                    <li>Horizontale Skalierung:</li>
+                    <li class="no-dot-list">
+                        <ul>
+                            <li> Hinzufügen weiterer Server oder Instanzen zur Lastenverteilung.</li>
+                        </ul>
+                    </li>
+                    <li>Vertikale Skalierung:</li>
+                    <li class="no-dot-list">
+                        <ul>
+                            <li>Verstärkung der Kapazitäten eines einzelnen Systems (z. B. durch stärkere
+                                Hardware).
+                            </li>
+                        </ul>
+                    </li>
+                    <li>Skalierbarkeit ist entscheidend für Systeme, die plötzliche Lastspitzen bewältigen müssen.
+                    </li>
+                </ul>
+            </section>
+            <section>
+                <h3>Abfrage Menti-Meter</h3>
+            </section>
+            <aside class="notes">
+                <ul>
+                    <li>10 Minuten</li>
+                </ul>
+            </aside>
+        </section>
+        <section>
+            <section>
+                <h2>Wie messe ich Performance?</h2>
+                <aside class="notes">
+                    <ul>
+                        <li>30 Minuten</li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                <h3>Welcher Bestandteil der Software soll gemessen werden?</h3>
+                <ul>
+                    <li>End-to-End</li>
+                    <li>Front-End</li>
+                    <li>Backend</li>
+                    <li>Persistenz-Schicht</li>
+                    <li>Datenbank</li>
+                    <li>einzelne Algorithmen</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Manuelles Ausführen</h3>
+                <ul class="fragment semi-fade-out">
+                    <li>"Durchklicken" in der Anwendung</li>
+                    <li>Senden von Requests an die API</li>
+                    <li>Beobachten / Messen der Antwortzeit und System Ressourcen Auslastung</li>
+                </ul>
+                <p class="fragment fade-in">Zeitintensiv; schlecht reproduzierbar; subjektiv</p>
+            </section>
+            <section>
+                <h3>Nutzen der Unit- und Integrationstests</h3>
+                <ul class="fragment semi-fade-out">
+                    <li>Tests werden - idealerweise - so oder so geschrieben</li>
+                    <li>Beobachten / Messen der Antwortzeit und System Ressourcen Auslastung</li>
+                </ul>
+                <p class="fragment fade-in">fehlende Warm-Up Phase (C1 und C2 Compiler); Zielkonflikte</p>
+            </section>
+            <section>
+                <h3>Monitoring der Produktiv-Anwendung</h3>
+                <ul class="fragment semi-fade-out">
+                    <li>Spiegelt "echte" Last im System wider</li>
+                    <li>Beobachten / Messen der Antwortzeit und System Ressourcen Auslastung</li>
+                </ul>
+                <p class="fragment fade-in">Zugriffsbeschränkungen; oft nur Post-Mortem nutzbar; Operation am offenen
+                    Herzen</p>
+            </section>
+            <section>
+                <h3>Was dann?</h3>
+            </section>
+            <section>
+                <h3>Tool Unterstützung</h3>
+                <p class="fragment fade-in">um Last in das System zu bringen</p>
+                <br>
+                <p class="fragment fade-in">um offen zulegen, was im System passiert</p>
+            </section>
+            <section>
+                <h3>Apache jMeter</h3>
+                <ul>
+                    <li>Kostenloses Open-Source-Tool</li>
+                    <li>Automatisiertes Testen / Messen der Leistung
+                        von Webanwendungen, Datenbanken und APIs unter Last.
+                    </li>
+                    <li>Unterstützt verschiedene Protokolle wie HTTP, SOAP und JDBC.
+                    </li>
+                    <li>Von einfachen Tests für kleinere Lasten bis zu großen
+                        Lasttests.
+                    </li>
+                    <li>Detaillierte Auswertungen der Testergebnisse.</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Hands-On jMeter</h3>
+                <aside class="notes">
+                    <ul>
+                        <li>Kurze Vorstellung Projekt</li>
+                        <li>jMeter</li>
+                        <li class="no-dot-list">
+                            <ul>
+                                <li>Thread</li>
+                                <li>HTTP Header</li>
+                                <li>Request</li>
+                                <li>Summary</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                <h3>Visual VM</h3>
+                <ul>
+                    <li>Kostenloses Open-Source-Tool zur Überwachung, Analyse von Java-Anwendungen.</li>
+                    <li>Überwachen von CPU-Auslastung, Speicherverbrauch, Thread-Aktivität</li>
+                    <li>Analyse von Heap-Dumps, um Speicherlecks zu identifizieren.</li>
+                    <li>Überwachen von entfernten Java-Anwendungen</li>
+                    <li>Analyse von Garbage Collection.</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Hands-On Visual VM</h3>
+                <aside class="notes">
+                    <ul>
+                        <li>ViVM</li>
+                        <li class="no-dot-list">
+                            <ul>
+                                <li>Überblick der Views</li>
+                                <li>Erklärung Sampler</li>
+                                <li>Show-Case Memory-Leak</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </aside>
+            </section>
+            <section>
+                <h3>Async Profiler</h3>
+                <ul>
+                    <li>Hochperformantes Profiling-Tool für Java, speziell für die Analyse von CPU- und
+                        Speicherverhalten.
+                    </li>
+                    <li>Ermöglicht das Profiling mit einem minimalen Performance-Overhead.</li>
+                    <li>Aufzeichnung von Methodenaufrufen und Hotspots.</li>
+                    <li>Open-Source-Tool</li>
+                    <li>Einfach in bestehende Java-Umgebungen integrierbar.</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Hands-On async-profiler</h3>
+                <aside class="notes">
+                    <ul>
+                        <li>asprof</li>
+                        <li class="no-dot-list">
+                            <ul>
+                                <li>Überblick des Commands</li>
+                                <li>Wall Show</li>
+                                <li>Show-Case Memory-Leak</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </aside>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Performance zu jedem Preis?</h2>
+            </section>
+            <aside class="notes">
+                <ul>
+                    <li>5 Minuten</li>
+                </ul>
+            </aside>
+            <section>
+                <h3>One-Billion-Row-Challenge</h3>
+                <div class="fragment fade-in-then-semi-out">
+                    <p>Einlesen von 1 Milliarde Zeilen im Format:</p>
+                    <pre>
+                    <code>
+                        Hamburg;12.0
+                        Bulawayo;8.9
+                        Palembang;38.8
+                        St. John's;15.2
+                    </code>
+                </pre>
+                </div>
+                <pre class="fragment fade-in-then-semi-out">
+                    <code>
+                       {Hamburg=-23.0/18.0/59.2, ...}
+                    </code>
+                </pre>
+                <p class="fragment"><a
+                        href="https://github.com/gunnarmorling/1brc/blob/main/src/main/java/dev/morling/onebrc/CalculateAverage_thomaswue.java">
+                    1,535 s</a></p>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Sum-Up und Ausblick</h2>
+            </section>
+            <aside class="notes">
+                <ul>
+                    <li>5 Minuten</li>
+                </ul>
+            </aside>
+            <section>
+                <h3>Sum-Up</h3>
+                <ul>
+                    <li>Schaffung eines gemeinsamen Verständnisses von Performance</li>
+                    <li>Einblick in die Ebenen und Methoden von Performance Messung</li>
+                    <li>Sensibilisierung von "wo stehen wir gerade bei FW mit dem Thema?"</li>
+                </ul>
+            </section>
+            <section>
+                <h3>Ausblick</h3>
+                <ul>
+                    <li>Ein Blick auf uns: Wie optimieren wir aktuell unsere Performance?</li>
+                    <li>Erarbeitung eines gemeinsamen Qualitätsstandards für Performance</li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <p>Session 2</p>
+            <h2>Workshop Performance</h2>
+        </section>
+        <section>
+            <h3>Agenda</h3>
+            <ul>
+                <li>Ziel des Workshops</li>
+                <li>Rückblick auf Session 1</li>
+                <li>Gruppenarbeit: Was machen wir aktuell für die Performance?</li>
+                <li>Gruppenarbeit: Erarbeitung eines Frachtwerk Qualitätsstandards</li>
+                <li>Und jetzt?</li>
+            </ul>
+        </section>
+        <section>
+            <section>
+                <h2>Ziel des Workshops</h2>
+            </section>
+            <section>
+                <h3>Ziel heute</h3>
+                <ul>
+                    <li>Erarbeitung von Leitplanken, um performante Software zu entwickeln</li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Rückblick auf Session 1</h2>
+            </section>
+            <section>
+                <h3>Was haben wir gemacht?</h3>
+                <ul>
+                    <li>Blick auf das aktuelle Verständnis von Performance</li>
+                    <li>Klärung der Schlüsselbegriffe</li>
+                    <li>Überblick über Tools und Arten von Performance Messung</li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Was machen wir aktuell für die Performance?</h2>
+            </section>
+            <section>
+                <h3>Gruppenarbeit</h3>
+                <p>Sammeln von</p>
+                <ul>
+                    <li>Was für Techniken für die Performance Optimierung nutzt ihr aktuell schon?</li>
+                    <li>In welchen Prozess Schritten schaut ihr auf die Performance?</li>
+                    <li>Gibt es Methoden / Praktiken, die ihr kennt, aber noch nicht selber nutzt?</li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Erarbeitung eines Frachtwerk Qualitätsstandards</h2>
+            </section>
+            <section>
+                <h3>Gruppenarbeit</h3>
+                <p>Sammeln von</p>
+                <ul>
+                    <li>Performance-Metriken: Was sollte regelmäßig gemessen werden?</li>
+                    <li>Code-Reviews: Wie kann Performance in Code-Reviews / den Entwicklungsprozess einbezogen
+                        werden?
+                    </li>
+                    <li>Testing: Wie sollten Acceptance / Live-System regelmäßig getestet werden? (Performance-Tests,
+                        Lasttests, Stresstests)
+                    </li>
+                </ul>
+            </section>
+        </section>
+        <section>
+            <section>
+                <h2>Und wie geht es weiter?</h2>
+            </section>
+        </section>
+    </div>
+</div>
+
+<script src="dist/reveal.js"></script>
+<script src="plugin/notes/notes.js"></script>
+<script src="plugin/markdown/markdown.js"></script>
+<script src="plugin/highlight/highlight.js"></script>
+<script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+        hash: true,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+    });
+</script>
+</body>
+</html>

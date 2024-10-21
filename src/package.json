@@ -1,9 +1,7 @@
 {
-  "name": "reveal.js",
-  "version": "5.1.0",
-  "description": "The HTML Presentation Framework",
-  "homepage": "https://revealjs.com",
-  "subdomain": "revealjs",
+  "name": "open-knowledge-hub-presentation",
+  "version": "0.0.1",
+  "description": "A collection of different presentation topics",
   "main": "dist/reveal.js",
   "module": "dist/reveal.esm.js",
   "license": "MIT",
@@ -13,20 +11,18 @@
     "build": "gulp build"
   },
   "author": {
-    "name": "Hakim El Hattab",
-    "email": "hakim.elhattab@gmail.com",
-    "web": "https://hakim.se"
+    "name": "Jelmen Guhlke",
+    "email": "mail@jguhlke.de",
+    "web": "https://jguhlke.de"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/hakimel/reveal.js.git"
+    "url": "git://github.com/OpenKnowledgeHub/presentations"
   },
   "engines": {
     "node": ">=18.0.0"
   },
   "keywords": [
-    "reveal",
-    "slides",
     "presentation"
   ],
   "devDependencies": {
@@ -62,7 +58,6 @@
     "chokidar": "3.5.3",
     "glob-parent": "6.0.2"
   },
-  "browserslist": "> 2%, not dead",
   "eslintConfig": {
     "env": {
       "browser": true,
